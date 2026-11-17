@@ -91,12 +91,13 @@ aeL();document.querySelector('.ae').insertAdjacentHTML('afterbegin',aeSk('b1ec24
 </script>
 <script>
 /* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message).
-   MutationObserver + timer as well as ResizeObserver, because browsers pause ResizeObserver in
-   cross-origin iframes that are off-screen or in an unfocused window. */
-(function(){var el=document.querySelector('.rw,.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
+   - Re-sends the height for the first 20s: the site loads Rubric's listener after the page, so early messages can be missed.
+   - MutationObserver + timer as well as ResizeObserver: browsers pause ResizeObserver in cross-origin iframes
+     that are off-screen or in an unfocused window. */
+(function(){var el=document.querySelector('.rw,.ae,.af'),last=0,t0=Date.now();function send(force){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last||force===true){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
 try{new ResizeObserver(send).observe(el)}catch(e){}
 new MutationObserver(function(){setTimeout(send,30)}).observe(el,{childList:true,subtree:true,attributes:true,characterData:true});
-addEventListener('load',send);document.addEventListener('load',send,true);setInterval(send,1000);send()})();
+addEventListener('load',send);document.addEventListener('load',send,true);setInterval(function(){send(Date.now()-t0<20000)},700);send()})();
 </script>
 </body>
 </html>
