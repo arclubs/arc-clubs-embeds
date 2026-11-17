@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-<style>html,body{margin:0;padding:0 16px;background:transparent}</style>
+<style>html,body{margin:0;padding:0 16px;background:transparent}.ae-z{display:block;background:#ECE9DD;border-radius:8px;animation:ae-pulse 1.4s ease-in-out infinite}@keyframes ae-pulse{0%,100%{opacity:1}50%{opacity:.35}}.ae-zc{display:flex;flex-direction:column;background:#fff;border:1px solid #E3E0D3;border-radius:24px;overflow:hidden}.ae-zb{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px}.ae-zt{height:20px;width:85%}.ae-z1{height:14px;width:60%}.ae-z2{height:14px;width:45%}.ae-zp{height:26px;width:80px;border-radius:20px;margin-top:6px}.ae-zn{display:inline-block;width:130px;height:16px;vertical-align:middle}.ae-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.ae-zi{aspect-ratio:16/9;border-radius:0}@media (prefers-reduced-motion:reduce){.ae-z{animation:none}}
+</style>
 </head>
 <body>
 <!-- Arc Club Events v3 -->
@@ -28,23 +29,24 @@
 <div class="ae-se"><select id="ae-typ" onchange="aeR(1)"><option value="">All event types</option></select></div>
 <div class="ae-se"><select id="ae-loc" onchange="aeL()"><option value="">Any location</option><option value="inperson">In-person</option><option value="online">Online</option></select></div>
 </div>
-<div class="ae-ch" id="ae-w"></div>
-<p class="ae-n" id="ae-n">Loading Club events...</p>
+<div class="ae-ch" id="ae-w"><i class="ae-z" aria-hidden="true" style="width:96px;height:38px;border-radius:20px;animation-delay:0.0s"></i><i class="ae-z" aria-hidden="true" style="width:84px;height:38px;border-radius:20px;animation-delay:0.1s"></i><i class="ae-z" aria-hidden="true" style="width:110px;height:38px;border-radius:20px;animation-delay:0.2s"></i><i class="ae-z" aria-hidden="true" style="width:112px;height:38px;border-radius:20px;animation-delay:0.3s"></i><i class="ae-z" aria-hidden="true" style="width:70px;height:38px;border-radius:20px;animation-delay:0.4s"></i><i class="ae-z" aria-hidden="true" style="width:108px;height:38px;border-radius:20px;animation-delay:0.5s"></i></div>
+<p class="ae-n" id="ae-n" role="status"><span class="ae-sr">Loading Club events...</span><i class="ae-z ae-zn"></i></p>
 <div class="ae-cal" id="ae-cal" hidden></div>
-<ul class="ae-l" id="ae-l"></ul>
+<ul class="ae-l" id="ae-l" aria-busy="true"><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.00s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.00s"></i><i class="ae-z ae-z1" style="animation-delay:0.00s"></i><i class="ae-z ae-z2" style="animation-delay:0.00s"></i><i class="ae-z ae-zp" style="animation-delay:0.00s"></i></span></li><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.12s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.12s"></i><i class="ae-z ae-z1" style="animation-delay:0.12s"></i><i class="ae-z ae-z2" style="animation-delay:0.12s"></i><i class="ae-z ae-zp" style="animation-delay:0.12s"></i></span></li><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.24s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.24s"></i><i class="ae-z ae-z1" style="animation-delay:0.24s"></i><i class="ae-z ae-z2" style="animation-delay:0.24s"></i><i class="ae-z ae-zp" style="animation-delay:0.24s"></i></span></li><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.36s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.36s"></i><i class="ae-z ae-z1" style="animation-delay:0.36s"></i><i class="ae-z ae-z2" style="animation-delay:0.36s"></i><i class="ae-z ae-zp" style="animation-delay:0.36s"></i></span></li><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.48s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.48s"></i><i class="ae-z ae-z1" style="animation-delay:0.48s"></i><i class="ae-z ae-z2" style="animation-delay:0.48s"></i><i class="ae-z ae-zp" style="animation-delay:0.48s"></i></span></li><li class="ae-zc" aria-hidden="true"><i class="ae-z ae-zi" style="animation-delay:0.60s"></i><span class="ae-zb"><i class="ae-z ae-zt" style="animation-delay:0.60s"></i><i class="ae-z ae-z1" style="animation-delay:0.60s"></i><i class="ae-z ae-z2" style="animation-delay:0.60s"></i><i class="ae-z ae-zp" style="animation-delay:0.60s"></i></span></li></ul>
 <button class="ae-k ae-dk ae-x" id="ae-x" onclick="aeS+=12;aeR()" hidden>Show more events</button>
 </div>
 <script>
 var aeE=[],aeS=12,aeW=0,aeF=0,aeCal=0,aeDay='',aeM,aeFr=/^(Free|\$0\.00)/;
 var aeSk=f=>'<img class="ae-sk" alt="" src="https://cdn.sanity.io/images/n0r2xokl/production/'+f+'.png?w=200" onerror="this.remove()">';
 var aeG=i=>document.getElementById('ae-'+i);
+var aeLdN=aeG('n').innerHTML,aeLdL=aeG('l').innerHTML;
 var aeH=t=>String(t||'').replace(/[&<>"]/g,c=>'&#'+c.charCodeAt()+';');
 var aeK=s=>String(s).toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim();
 var aeT=(t,o)=>(o.timeZone='Australia/Sydney',new Date(t*1e3).toLocaleString('en-AU',o));
 var aeDK=t=>aeT(t,{year:'numeric',month:'2-digit',day:'2-digit'}).split('/').reverse().join('-');
 var aeNow=()=>Date.now()/1e3;
 function aeL(){
-aeG('n').textContent='Loading...';
+aeG('n').innerHTML=aeLdN;aeG('l').innerHTML=aeLdL;aeG('l').setAttribute('aria-busy','true');aeG('x').hidden=true;
 var d={firstCall:true,sortType:'date',desiredType:'events',limit:500,offset:0,sortDirection:'asc',selectedUniversityId:5,showEventsFilter:'club'},c=aeG('cat').value,l=aeG('loc').value;
 if(c)d.filterEventClubType=c;if(l)d.filterEventLocation=l;
 fetch('https://api.hellorubric.com',{method:'POST',body:new URLSearchParams({details:JSON.stringify(d),endpoint:'getUnifiedSearch'})}).then(r=>r.json()).then(j=>{
@@ -71,7 +73,7 @@ aeE.forEach(e=>aeOK(e)&&(e.dk<td?on:up).push(e));
 a=up.concat(on);
 for(i=0;i<a.length&&i<aeS;i++){e=a[i];t=e.sortindex;
 h+='<li class="ae-c" style="animation-delay:'+i%12*50+'ms"><a href="https://campus.hellorubric.com'+aeH(e.destination)+'" target="_blank"><span class="ae-im" style="background-image:url(\''+aeH(e.image)+'\')"><span class="ae-d"><b>'+aeT(t,{day:'numeric'})+'</b>'+aeT(t,{month:'short'})+'</span></span><span class="ae-b"><span class="ae-t">'+aeH(e.title)+'</span><span class="ae-o">'+(e.societylogo?'<img alt="" src="'+aeH(e.societylogo)+'" onerror="this.remove()">':'')+aeH(e.societyname)+'</span><span class="ae-m">'+(e.dk<td?'Started '+aeT(t,{day:'numeric',month:'short'})+' · ongoing':aeT(t,{weekday:'short',hour:'numeric',minute:'2-digit'}))+' · '+aeH(e.subtitle)+'</span><span class="ae-p'+(aeFr.test(e.info)?' fr':'')+'">'+aeH(e.info)+'</span></span></a></li>'}
-aeG('l').innerHTML=a.length?h:'<li class="ae-e">'+aeSk('6468e5c1bc9066fef81003497eeae0ee0b2038c1-856x855')+'<b>No Club events match that.</b><br>Try another word or clear a filter 💚</li>';
+aeG('l').removeAttribute('aria-busy');aeG('l').innerHTML=a.length?h:'<li class="ae-e">'+aeSk('6468e5c1bc9066fef81003497eeae0ee0b2038c1-856x855')+'<b>No Club events match that.</b><br>Try another word or clear a filter 💚</li>';
 aeG('n').innerHTML='<b>'+a.length+'</b> Club event'+(a.length==1?'':'s')+(aeDay?' on '+aeDay.split('-').reverse().join('/'):'');
 aeG('x').hidden=a.length<=aeS;
 aeP();aeC()}
@@ -88,8 +90,13 @@ function aeMv(s){var D=new Date(aeM[0],aeM[1]+s);aeM=[D.getFullYear(),D.getMonth
 aeL();document.querySelector('.ae').insertAdjacentHTML('afterbegin',aeSk('b1ec244423ba9c6768882442bf326974194f8546-857x855'))
 </script>
 <script>
-/* Auto-height: sends the Rubric iframe message the Arc site's Rubric Embed module already listens for */
-(function(){var el=document.querySelector('.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}new ResizeObserver(send).observe(el);addEventListener('load',send);send()})();
+/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message).
+   MutationObserver + timer as well as ResizeObserver, because browsers pause ResizeObserver in
+   cross-origin iframes that are off-screen or in an unfocused window. */
+(function(){var el=document.querySelector('.rw,.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
+try{new ResizeObserver(send).observe(el)}catch(e){}
+new MutationObserver(function(){setTimeout(send,30)}).observe(el,{childList:true,subtree:true,attributes:true,characterData:true});
+addEventListener('load',send);document.addEventListener('load',send,true);setInterval(send,1000);send()})();
 </script>
 </body>
 </html>
