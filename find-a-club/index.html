@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-<style>html,body{margin:0;padding:0 16px;background:transparent}</style>
+<style>html,body{margin:0;padding:0 16px;background:transparent}.af-z{display:block;background:#ECE9DD;border-radius:8px;animation:af-pulse 1.4s ease-in-out infinite}@keyframes af-pulse{0%,100%{opacity:1}50%{opacity:.35}}.af-zc{display:flex;flex-direction:column;background:#fff;border:1px solid #E3E0D3;border-radius:24px;overflow:hidden}.af-zb{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px}.af-zt{height:20px;width:85%}.af-z1{height:14px;width:60%}.af-z2{height:14px;width:45%}.af-zp{height:26px;width:80px;border-radius:20px;margin-top:6px}.af-zn{display:inline-block;width:130px;height:16px;vertical-align:middle}.af-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.af-zh{display:flex;justify-content:center;padding:22px;background:#F7F4E7}.af-zo{width:96px;height:96px;border-radius:50%;background:#E7E3D4}.af-zr{display:flex;gap:6px;margin-top:6px}.af-zr .af-zp{width:64px;margin:0}@media (prefers-reduced-motion:reduce){.af-z{animation:none}}
+</style>
 </head>
 <body>
 <!-- Arc Find a Club v3 -->
@@ -28,22 +29,23 @@
 <div class="af-se"><select id="af-cat" onchange="afL()"><option value="">All Club categories</option></select></div>
 <div class="af-se"><select id="af-o" onchange="afR(1)"><option value="0">A to Z</option><option value="1">Z to A</option><option value="2">Most events</option></select></div>
 </div>
-<div class="af-ch" id="af-w"></div>
-<p class="af-n" id="af-n">Loading Clubs...</p>
-<ul class="af-l" id="af-l"></ul>
+<div class="af-ch" id="af-w"><i class="af-z" aria-hidden="true" style="width:104px;height:38px;border-radius:20px;animation-delay:0.0s"></i><i class="af-z" aria-hidden="true" style="width:150px;height:38px;border-radius:20px;animation-delay:0.1s"></i><i class="af-z" aria-hidden="true" style="width:140px;height:38px;border-radius:20px;animation-delay:0.2s"></i><i class="af-z" aria-hidden="true" style="width:124px;height:38px;border-radius:20px;animation-delay:0.3s"></i></div>
+<p class="af-n" id="af-n" role="status"><span class="af-sr">Loading Clubs...</span><i class="af-z af-zn"></i></p>
+<ul class="af-l" id="af-l" aria-busy="true"><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.00s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.00s"></i><i class="af-z af-z1" style="animation-delay:0.00s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.00s"></i><i class="af-z af-zp" style="animation-delay:0.00s"></i><i class="af-z af-zp" style="animation-delay:0.00s"></i></span></span></li><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.12s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.12s"></i><i class="af-z af-z1" style="animation-delay:0.12s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.12s"></i><i class="af-z af-zp" style="animation-delay:0.12s"></i><i class="af-z af-zp" style="animation-delay:0.12s"></i></span></span></li><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.24s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.24s"></i><i class="af-z af-z1" style="animation-delay:0.24s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.24s"></i><i class="af-z af-zp" style="animation-delay:0.24s"></i><i class="af-z af-zp" style="animation-delay:0.24s"></i></span></span></li><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.36s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.36s"></i><i class="af-z af-z1" style="animation-delay:0.36s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.36s"></i><i class="af-z af-zp" style="animation-delay:0.36s"></i><i class="af-z af-zp" style="animation-delay:0.36s"></i></span></span></li><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.48s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.48s"></i><i class="af-z af-z1" style="animation-delay:0.48s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.48s"></i><i class="af-z af-zp" style="animation-delay:0.48s"></i><i class="af-z af-zp" style="animation-delay:0.48s"></i></span></span></li><li class="af-zc" aria-hidden="true"><span class="af-zh"><i class="af-z af-zo" style="animation-delay:0.60s"></i></span><span class="af-zb"><i class="af-z af-zt" style="animation-delay:0.60s"></i><i class="af-z af-z1" style="animation-delay:0.60s"></i><span class="af-zr"><i class="af-z af-zp" style="animation-delay:0.60s"></i><i class="af-z af-zp" style="animation-delay:0.60s"></i><i class="af-z af-zp" style="animation-delay:0.60s"></i></span></span></li></ul>
 <button class="af-k af-dk af-x" id="af-x" onclick="afS+=24;afR()" hidden>Show more Clubs</button>
 </div>
 <script>
 var afC,afV={},afS=24,afW=0;
 var afSk=f=>'<img class="af-sk" alt="" src="https://cdn.sanity.io/images/n0r2xokl/production/'+f+'.png?w=200" onerror="this.remove()">';
 var afG=i=>document.getElementById('af-'+i);
+var afLdN=afG('n').innerHTML,afLdL=afG('l').innerHTML;
 var afH=t=>String(t||'').replace(/[&<>"]/g,c=>'&#'+c.charCodeAt()+';');
 var afK=s=>String(s).toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim();
 var afU=u=>afH(/^http/.test(u)?u:'https://'+u);
 var afF=d=>fetch('https://api.hellorubric.com',{method:'POST',body:new URLSearchParams({details:JSON.stringify(Object.assign({firstCall:true,sortType:'date',limit:1000,offset:0,sortDirection:'asc',selectedUniversityId:5},d)),endpoint:'getUnifiedSearch'})}).then(r=>r.json());
 afF({desiredType:'events',showEventsFilter:'club'}).then(j=>{var t=Date.now()/1e3-864e2;(j.results||[]).forEach(e=>{if(e.sortindex>t)afV[e.societyid]=(afV[e.societyid]||0)+1});afR()}).catch(e=>0);
 function afL(){
-afG('n').textContent='Loading...';
+afG('n').innerHTML=afLdN;afG('l').innerHTML=afLdL;afG('l').setAttribute('aria-busy','true');afG('x').hidden=true;
 var c=afG('cat').value,d={desiredType:'societies'};if(c)d.filterClubType=c;
 afF(d).then(j=>{
 if(!j.success)throw Error(j.error||'no data');
@@ -56,15 +58,20 @@ var q=afK(afG('q').value),o=afG('o').value,h='',i,c,v,a=afC.filter(c=>(!q||q.spl
 a.sort((x,y)=>o==2&&(afV[y.societyid]||0)-(afV[x.societyid]||0)||(o==1?-1:1)*x.title.localeCompare(y.title));
 for(i=0;i<a.length&&i<afS;i++){c=a[i];v=afV[c.societyid];
 h+='<li class="af-c" style="animation-delay:'+i%24*30+'ms"><span class="af-im"><span class="af-lo">'+c.title.replace(/UNSW|The |[^A-Z]/g,'').slice(0,2)+(/default/.test(c.image)?'':'<img alt="" src="'+afH(c.image)+'" onerror="this.remove()">')+'</span></span><span class="af-b"><a class="af-t" href="https://campus.hellorubric.com'+afH(c.destination)+'" target="_blank">'+afH(c.title)+'</a>'+(v?'<span class="af-p">'+v+' event'+(v>1?'s':'')+' coming up</span>':'')+'<span class="af-s"><a class="af-j" href="https://campus.hellorubric.com'+afH(c.destination)+'" target="_blank">Join Here</a>'+(c.instagramurl?'<a href="'+afU(c.instagramurl)+'" target="_blank">Instagram</a>':'')+(c.facebookurl?'<a href="'+afU(c.facebookurl)+'" target="_blank">Facebook</a>':'')+(c.discordurl?'<a href="'+afU(c.discordurl)+'" target="_blank">Discord</a>':'')+'</span></span></li>'}
-afG('l').innerHTML=a.length?h:'<li class="af-e">'+afSk('5179e5331b5fbeb0dde27f899644417e241cbf48-318x318')+'<b>No Clubs match that.</b><br>Try one distinctive word, or clear a filter. Can\'t find your thing? You can start a new Club 💚</li>';
+afG('l').removeAttribute('aria-busy');afG('l').innerHTML=a.length?h:'<li class="af-e">'+afSk('5179e5331b5fbeb0dde27f899644417e241cbf48-318x318')+'<b>No Clubs match that.</b><br>Try one distinctive word, or clear a filter. Can\'t find your thing? You can start a new Club 💚</li>';
 afG('n').innerHTML='<b>'+a.length+'</b> Club'+(a.length==1?'':'s');
 afG('x').hidden=a.length<=afS;
 h='';['All Clubs','Upcoming events','On Instagram','On Discord'].forEach((n,i)=>h+='<button class="af-k'+(afW==i?' on':'')+'" onclick="afW='+i+';afR(1)">'+n+'</button>');afG('w').innerHTML=h}
 afL();document.querySelector('.af').insertAdjacentHTML('afterbegin',afSk('dfc74f85eb526ac6f3165564dd8535c6714ec682-854x855'))
 </script>
 <script>
-/* Auto-height: sends the Rubric iframe message the Arc site's Rubric Embed module already listens for */
-(function(){var el=document.querySelector('.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}new ResizeObserver(send).observe(el);addEventListener('load',send);send()})();
+/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message).
+   MutationObserver + timer as well as ResizeObserver, because browsers pause ResizeObserver in
+   cross-origin iframes that are off-screen or in an unfocused window. */
+(function(){var el=document.querySelector('.rw,.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
+try{new ResizeObserver(send).observe(el)}catch(e){}
+new MutationObserver(function(){setTimeout(send,30)}).observe(el,{childList:true,subtree:true,attributes:true,characterData:true});
+addEventListener('load',send);document.addEventListener('load',send,true);setInterval(send,1000);send()})();
 </script>
 </body>
 </html>
