@@ -88,8 +88,8 @@ function aeMv(s){var D=new Date(aeM[0],aeM[1]+s);aeM=[D.getFullYear(),D.getMonth
 aeL();document.querySelector('.ae').insertAdjacentHTML('afterbegin',aeSk('b1ec244423ba9c6768882442bf326974194f8546-857x855'))
 </script>
 <script>
-/* Tells the parent page how tall this embed is, in case the Arc site ever adds auto-resizing */
-new ResizeObserver(function(){parent.postMessage({arcEmbed:'club-events',height:document.documentElement.scrollHeight},'*')}).observe(document.body);
+/* Auto-height: sends the Rubric iframe message the Arc site's Rubric Embed module already listens for */
+(function(){var el=document.querySelector('.ae,.af'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}new ResizeObserver(send).observe(el);addEventListener('load',send);send()})();
 </script>
 </body>
 </html>
