@@ -31,6 +31,18 @@ html,body{margin:0;padding:0 16px;background:transparent}
 @keyframes rw-a{from{opacity:0;transform:translateY(10px)}}
 @media (max-width:640px){.rw-sk{width:64px;top:-32px}.rw-card{padding:18px;border-radius:20px}}
 
+.rw-z{display:block;background:#ECE9DD;border-radius:8px;animation:rw-pulse 1.4s ease-in-out infinite}
+@keyframes rw-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.rw-zc{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #E3E0D3;border-radius:24px;padding:22px}
+.rw-zp{width:96px;height:28px;border-radius:20px}.rw-zt{height:20px;width:85%}.rw-z1{height:14px;width:45%}.rw-z2{height:14px;width:90%}.rw-z3{height:14px;width:70%}
+.rw-zn{display:inline-block;width:110px;height:16px;vertical-align:middle}
+.rw-zk{display:inline-block;height:42px;border-radius:20px}
+.rw-zr{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dotted #E3E0D3}.rw-zr:last-child{border-bottom:0}
+.rw-zo{width:36px;height:36px;border-radius:18px;flex:0 0 auto}.rw-zm{height:16px;flex:1;max-width:240px}.rw-zv{height:16px;width:64px;margin-left:auto}
+.rw-zg{height:66px;border-radius:14px;margin-top:14px;background:#DDEFD0}
+.rw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.rw-z{animation:none}}
+
 .rw-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .rw-h{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:inline-block;padding:5px 12px;border-radius:20px;background:var(--k);color:#fff;margin:0 0 16px}
 .rw-row{display:flex;gap:10px}
@@ -70,7 +82,7 @@ html,body{margin:0;padding:0 16px;background:transparent}
 <span class="rw-h">Clubs</span>
 <label class="rw-lb" for="rw-cq">Find your Club</label>
 <input class="rw-in" id="rw-cq" autocomplete="off" placeholder="Start typing your Club name" oninput="findClub()">
-<div class="rw-list" id="rw-cl"><p class="rw-st" style="padding:12px 16px">Loading Clubs...</p></div>
+<div class="rw-list" id="rw-cl" aria-busy="true"><span class="rw-sr" role="status">Loading Clubs...</span><i class="rw-z" style="height:16px;width:70%;margin:14px 16px;animation-delay:0.0s"></i><i class="rw-z" style="height:16px;width:55%;margin:14px 16px;animation-delay:0.1s"></i><i class="rw-z" style="height:16px;width:80%;margin:14px 16px;animation-delay:0.2s"></i><i class="rw-z" style="height:16px;width:60%;margin:14px 16px;animation-delay:0.3s"></i></div>
 <div class="rw-res" id="rw-club"></div>
 </section>
 </div>
@@ -87,7 +99,7 @@ G('rw-z').addEventListener('keydown',function(e){if(e.key==='Enter')me()});
 function me(){
   var z=G('rw-z').value.trim().replace(/^z/i,''),o=G('rw-me');
   if(!/^\d{7}$/.test(z)){o.innerHTML='<p class="rw-err">That doesn\'t look like a zID. Enter the 7 digits, e.g. 5123456.</p>';return}
-  o.innerHTML='<p class="rw-st">Checking...</p>';
+  o.innerHTML='<div class="rw-zr"><i class="rw-z rw-zm"></i><i class="rw-z rw-zv"></i></div><i class="rw-z rw-zg"></i><span class="rw-sr" role="status">Checking...</span>';
   fetch(URL_ME+'?q='+encodeURIComponent(z)).then(function(r){return r.json()}).then(function(d){
     if(d.error)throw Error(d.error);
     if(!d.results||!d.results.length){o.innerHTML='<p class="rw-err">No points found for '+esc(z)+' yet. Points land 1-2 business days after an activity, and only for Execs and Volunteers registered on Rubric. Still missing? Email <a href="mailto:clubs@arc.unsw.edu.au" target="_top">clubs@arc.unsw.edu.au</a></p>';return}
@@ -105,16 +117,22 @@ fetch(URL_CL+'?action=list').then(function(r){return r.json()}).then(function(d)
 function findClub(){
   var q=key(G('rw-cq').value),w=q?q.split(' '):[],a=clubs.filter(function(c){return w.every(function(t){return c.k.indexOf(t)>=0})||(q&&c.z.indexOf(q.replace(/ /g,''))>=0)}),h='';
   a.forEach(function(c,i){h+='<button class="rw-it'+(c.n===sel?' on':'')+'" onclick="club('+clubs.indexOf(c)+')">'+esc(c.n)+'</button>'});
-  G('rw-cl').innerHTML=h||'<p class="rw-st" style="padding:12px 16px">No Club matches that. Try one distinctive word.</p>';
+  G('rw-cl').removeAttribute('aria-busy');G('rw-cl').innerHTML=h||'<p class="rw-st" style="padding:12px 16px">No Club matches that. Try one distinctive word.</p>';
 }
-function club(i){var c=clubs[i],o=G('rw-club');sel=c.n;findClub();o.innerHTML='<p class="rw-st">Checking...</p>';
+function club(i){var c=clubs[i],o=G('rw-club');sel=c.n;findClub();o.innerHTML='<div class="rw-zr"><i class="rw-z rw-zm"></i><i class="rw-z rw-zv"></i></div><i class="rw-z rw-zg"></i><span class="rw-sr" role="status">Checking...</span>';
   fetch(URL_CL+'?action=balance&club='+encodeURIComponent(c.n)).then(function(r){return r.json()}).then(function(d){if(!d||d.error)throw Error(d&&d.error||'no data');
     o.innerHTML='<div class="rw-tot"><span>Club points balance</span><b>'+pts(d.balance)+'</b></div>'})
   .catch(function(e){o.innerHTML='<p class="rw-err">Could not load the balance ('+esc(e.message)+').</p>'})}
 </script>
 <script>
-/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message) */
-(function(){var el=document.querySelector('.rw'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}new ResizeObserver(send).observe(el);addEventListener('load',send);send()})();
+/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message).
+   - Re-sends the height for the first 20s: the site loads Rubric's listener after the page, so early messages can be missed.
+   - MutationObserver + timer as well as ResizeObserver: browsers pause ResizeObserver in cross-origin iframes
+     that are off-screen or in an unfocused window. */
+(function(){var el=document.querySelector('.rw,.ae,.af'),last=0,t0=Date.now();function send(force){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last||force===true){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
+try{new ResizeObserver(send).observe(el)}catch(e){}
+new MutationObserver(function(){setTimeout(send,30)}).observe(el,{childList:true,subtree:true,attributes:true,characterData:true});
+addEventListener('load',send);document.addEventListener('load',send,true);setInterval(function(){send(Date.now()-t0<20000)},700);send()})();
 </script>
 </body>
 </html>
