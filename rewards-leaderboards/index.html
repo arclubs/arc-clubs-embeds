@@ -31,6 +31,18 @@ html,body{margin:0;padding:0 16px;background:transparent}
 @keyframes rw-a{from{opacity:0;transform:translateY(10px)}}
 @media (max-width:640px){.rw-sk{width:64px;top:-32px}.rw-card{padding:18px;border-radius:20px}}
 
+.rw-z{display:block;background:#ECE9DD;border-radius:8px;animation:rw-pulse 1.4s ease-in-out infinite}
+@keyframes rw-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.rw-zc{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #E3E0D3;border-radius:24px;padding:22px}
+.rw-zp{width:96px;height:28px;border-radius:20px}.rw-zt{height:20px;width:85%}.rw-z1{height:14px;width:45%}.rw-z2{height:14px;width:90%}.rw-z3{height:14px;width:70%}
+.rw-zn{display:inline-block;width:110px;height:16px;vertical-align:middle}
+.rw-zk{display:inline-block;height:42px;border-radius:20px}
+.rw-zr{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dotted #E3E0D3}.rw-zr:last-child{border-bottom:0}
+.rw-zo{width:36px;height:36px;border-radius:18px;flex:0 0 auto}.rw-zm{height:16px;flex:1;max-width:240px}.rw-zv{height:16px;width:64px;margin-left:auto}
+.rw-zg{height:66px;border-radius:14px;margin-top:14px;background:#DDEFD0}
+.rw-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.rw-z{animation:none}}
+
 .rw-tb{width:100%;border-collapse:collapse}
 .rw-tb th{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:0 0 12px;border-bottom:1px solid var(--k)}
 .rw-tb td{font-size:17px;padding:14px 0;border-bottom:1px dotted var(--r)}
@@ -48,31 +60,37 @@ html,body{margin:0;padding:0 16px;background:transparent}
 <body>
 <div class="rw">
 <img class="rw-sk" alt="" aria-hidden="true" src="https://cdn.sanity.io/images/n0r2xokl/production/b77b3c5bcc8e8e58eac5dd23dfdabca60f539b60-1671x1672.png?w=200" onerror="this.remove()">
-<div class="rw-tabs" id="rw-tabs"></div>
-<div class="rw-card rw-a" id="rw-box"><p class="rw-st">Loading leaderboard...</p></div>
+<div class="rw-tabs" id="rw-tabs"><i class="rw-z rw-zk" style="width:170px;animation-delay:0.0s"></i><i class="rw-z rw-zk" style="width:90px;animation-delay:0.1s"></i></div>
+<div class="rw-card rw-a" id="rw-box" aria-busy="true"><span class="rw-sr" role="status">Loading leaderboard...</span><i class="rw-z" style="height:20px;width:260px;margin:0 0 14px"></i><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.00s"></i><i class="rw-z rw-zm" style="animation-delay:0.00s"></i><i class="rw-z rw-zv" style="animation-delay:0.00s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.12s"></i><i class="rw-z rw-zm" style="animation-delay:0.12s"></i><i class="rw-z rw-zv" style="animation-delay:0.12s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.24s"></i><i class="rw-z rw-zm" style="animation-delay:0.24s"></i><i class="rw-z rw-zv" style="animation-delay:0.24s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.36s"></i><i class="rw-z rw-zm" style="animation-delay:0.36s"></i><i class="rw-z rw-zv" style="animation-delay:0.36s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.48s"></i><i class="rw-z rw-zm" style="animation-delay:0.48s"></i><i class="rw-z rw-zv" style="animation-delay:0.48s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.60s"></i><i class="rw-z rw-zm" style="animation-delay:0.60s"></i><i class="rw-z rw-zv" style="animation-delay:0.60s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.72s"></i><i class="rw-z rw-zm" style="animation-delay:0.72s"></i><i class="rw-z rw-zv" style="animation-delay:0.72s"></i></div><div class="rw-zr"><i class="rw-z rw-zo" style="animation-delay:0.84s"></i><i class="rw-z rw-zm" style="animation-delay:0.84s"></i><i class="rw-z rw-zv" style="animation-delay:0.84s"></i></div></div>
 </div>
 <script>
 var BOARDS={
   execs:{label:'Execs & Vollies',top:'Top 50 Executives & Volunteers',url:'https://script.google.com/macros/s/AKfycbzXw1H8o_UPQXWiUqJFQh8XtbQaTmldjGIy66185B07m6y9AtzxwzLT5hJeSXUkhqHBTA/exec',col:'Name',name:function(r){return r.name}},
   clubs:{label:'Clubs',top:'Top 10 Clubs',url:'https://script.google.com/macros/s/AKfycbyJY_S3mOo61PeKE7jLxzV_me4RCEYr5oqq_drTUpEz_c1Lbk8IrtRlvbQnE6TbQfOggA/exec',col:'Club',name:function(r){return r.clubName}}
 };
-var cur='execs',data={},show=10;
+var cur='execs',data={},show=10,SKEL=G('rw-box').innerHTML;
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return'&#'+c.charCodeAt(0)+';'})}
 function G(i){return document.getElementById(i)}
 function tabs(){var h='';Object.keys(BOARDS).forEach(function(k){h+='<button class="rw-k'+(cur===k?' dk':'')+'" onclick="pick(\''+k+'\')">'+BOARDS[k].label+'</button>'});G('rw-tabs').innerHTML=h}
 function pick(k){cur=k;show=10;tabs();if(data[k])draw();else load(k)}
-function load(k){G('rw-box').innerHTML='<p class="rw-st">Loading leaderboard...</p>';
+function load(k){G('rw-box').innerHTML=SKEL;
   fetch(BOARDS[k].url).then(function(r){return r.json()}).then(function(d){if(!Array.isArray(d))throw Error(d&&d.error||'unexpected data');data[k]=d;if(cur===k)draw()})
   .catch(function(e){G('rw-box').innerHTML='<p class="rw-st">Could not load the leaderboard ('+esc(e.message)+'). Please refresh.</p>'})}
 function draw(){var b=BOARDS[cur],d=data[cur],h='<p class="rw-lb">'+b.top+'</p><table class="rw-tb"><thead><tr><th>Rank</th><th>'+b.col+'</th><th>Points</th></tr></thead><tbody>';
   d.slice(0,show).forEach(function(r){var rk=Number(r.rank);h+='<tr class="'+(rk<=3?'rw-r'+rk:'')+'"><td><span class="rw-rk">'+esc(r.rank)+'</span></td><td>'+esc(b.name(r))+'</td><td>'+Number(r.points).toLocaleString('en-AU')+' pts</td></tr>'});
   h+='</tbody></table>'+(d.length>show?'<button class="rw-k dk rw-more" onclick="show+=20;draw()">Show more</button>':'');
-  G('rw-box').innerHTML=h}
+  G('rw-box').removeAttribute('aria-busy');G('rw-box').innerHTML=h}
 tabs();load('execs');
 </script>
 <script>
-/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message) */
-(function(){var el=document.querySelector('.rw'),last=0;function send(){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}new ResizeObserver(send).observe(el);addEventListener('load',send);send()})();
+/* Auto-height for the Arc site's Rubric Embed module (Rubric's resize-iframe message).
+   - Re-sends the height for the first 20s: the site loads Rubric's listener after the page, so early messages can be missed.
+   - MutationObserver + timer as well as ResizeObserver: browsers pause ResizeObserver in cross-origin iframes
+     that are off-screen or in an unfocused window. */
+(function(){var el=document.querySelector('.rw,.ae,.af'),last=0,t0=Date.now();function send(force){var h=Math.ceil(el.getBoundingClientRect().bottom+scrollY)+40;if(h!==last||force===true){last=h;[location.href,location.href.replace(/\/$/,'')].forEach(function(u){parent.postMessage({type:'resize-iframe',height:h,iframe_src:u},'*')})}}
+try{new ResizeObserver(send).observe(el)}catch(e){}
+new MutationObserver(function(){setTimeout(send,30)}).observe(el,{childList:true,subtree:true,attributes:true,characterData:true});
+addEventListener('load',send);document.addEventListener('load',send,true);setInterval(function(){send(Date.now()-t0<20000)},700);send()})();
 </script>
 </body>
 </html>
